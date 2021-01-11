@@ -16,7 +16,6 @@ public class Main {
         for(int i = 3; i <= 10; i++) {
             dp[i] = dp[i - 1] + dp[i - 2] + dp[i - 3];
         }
-
         for(int i = 0; i < T; i++) {
             int n = Integer.parseInt(br.readLine());
             System.out.println(dp[n]);
