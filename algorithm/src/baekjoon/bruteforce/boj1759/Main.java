@@ -34,7 +34,7 @@ public class Main {
 
     public static void dfs(int deptNow, int dept) {
         if(deptNow == dept) {
-            if(isPossible()) {
+            if (isPossible()) {
                 ans.add(sb.toString());
             }
             return;
