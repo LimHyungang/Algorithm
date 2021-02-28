@@ -51,7 +51,6 @@ public class Main {
 
                 for(int j = total/2; j >= v; j--) {
                     if(dp[j - v]) {  // dp[j-v]가 가능해야 거기에 동전 하나씩 더해서 다음 액수를 가능하게 만들지
-
                         // (j-v)원부터 동전 v를 하나씩 사용하는 것
                         for(int k = 1; k <= q; k++) {
                             if(j - v + v * k > total/2) break;  // dp[total/2] 이상으로는 어차피 채울 필요 없음
