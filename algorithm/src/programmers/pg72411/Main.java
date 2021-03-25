@@ -7,6 +7,7 @@ class Solution {
     int max, mapIdx;
     StringBuilder sb;
     Map<String, Integer>[] mapArr;
+    boolean[] check;
 
     public void push() {
         Map<String, Integer> temp = mapArr[mapIdx];
@@ -26,11 +27,16 @@ class Solution {
         }
 
         int len = order.length();
-        if(idx < len && deptNow + (len - idx) >= dept) {
-            sb.append(order.charAt(idx));
-            dfs(deptNow+1, dept, idx+1, order);
-            sb.deleteCharAt(sb.length() - 1);
-            dfs(deptNow, dept, idx+1, order);
+        for(int i = idx; i < len; i++) {
+            if(!check[i] && deptNow + (len - idx) >= dept) {
+                sb.append(order.charAt(i));
+                check[i] = true;
+
+                dfs(deptNow+1, dept, i+1, order);
+
+                sb.deleteCharAt(sb.length() - 1);
+                check[i] = false;
+            }
         }
     }
 
@@ -54,6 +60,7 @@ class Solution {
         for(int i = 0; i < course.length; i++) {
             max = 0;  // max 초기화
             for(int j = 0; j < orders.length; j++) {
+                check = new boolean[orders[j].length()];
                 dfs(0, course[i], 0, orders[j]);
             }
             mapIdx += 1;
